@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Event Registration System</h1>
+
+    <form method="POST">
+
+        <input type="number"
+       name="id"
+       placeholder="Enter ID for Update/Delete"
+       required>
+
+        <input type="text"
+               name="fullname"
+               placeholder="Full Name">
+
+        <input type="email"
+               name="email"
+               placeholder="Email">
+
+        <input type="text"
+               name="phone"
+               placeholder="Phone Number">
+
+        <select name="event_name">
+            <option value="">Select Event</option>
+            <option>Hackathon</option>
+            <option>AI Workshop</option>
+            <option>Web Development Seminar</option>
+            <option>Data Science Conference</option>
+        </select>
+
+        <div class="buttons">
+
+    <button type="submit"
+            formaction="/add"
+            class="submit-btn">
+        Submit
+    </button>
+
+    <button type="submit"
+            formaction="/view"
+            class="view-btn">
+        View Records
+    </button>
+
+    <button type="submit"
+            formaction="/update"
+            class="update-btn">
+        Update Record
+    </button>
+
+    <button type="submit"
+            formaction="/delete"
+            class="delete-btn">
+        Delete Record
+    </button>
+
+</div>
+
+    </form>
+
+    {% if registrations %}
+
+    <h2>Registered Participants</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Event</th>
+        </tr>
+
+        {% for row in registrations %}
+
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
