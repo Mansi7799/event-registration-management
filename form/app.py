@@ -13,9 +13,7 @@ app.config['MYSQL_DB'] = 'eventdb'
 
 mysql = MySQL(app)
 
-# -------------------------------
 # Home Page
-# -------------------------------
 @app.route('/')
 def home():
 
@@ -103,7 +101,7 @@ def update():
 
     return redirect('/')
 
-# Delete Record By ID
+# Delete Record 
 @app.route('/delete', methods=['POST'])
 def delete():
 
